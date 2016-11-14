@@ -19,7 +19,7 @@ class ContactPresenter extends \Nette\Application\UI\Presenter
 
 		$form->addSubmit('send', 'Odeslat');
 		$form->onSuccess[] = function (UI\Form $form, $values) {
-			$this->flashMessage(Html::el()->addText("Hi $values->name!")->addHtml("<br>Thanks for message!"));
+			$this->flashMessage(Html::el()->addText("Hi $values->name!")->addHtml('<br>Thanks for message!'));
 			$this->redirect('this');
 		};
 
