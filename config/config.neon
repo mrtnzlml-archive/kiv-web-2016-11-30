@@ -1,0 +1,39 @@
+parameters:
+	srcDir: %appDir%/../src
+
+
+application:
+	catchExceptions: no
+	errorPresenter: Front:Error
+	scanDirs: no
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+extensions:
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	console: Kdyby\Console\DI\ConsoleExtension
+	customRouting: App\Routing\DI\Extension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	doctrine2identity: Majkl578\NetteAddons\Doctrine2Identity\DI\IdentityExtension
+	events: Kdyby\Events\DI\EventsExtension
+	users: App\Users\DI\Extension
+
+
+customRouting:
+	routingIdMap: [
+		0: Front:Homepage:default # 0 = default
+		1: Front:Single:about
+		2: Front:Single:login
+		123: Front:Contact:default
+	]
+
+
+doctrine:
+	types:
+		uuid: Ramsey\Uuid\Doctrine\UuidType
+		uuid_binary: Ramsey\Uuid\Doctrine\UuidBinaryType
+
+
+session:
+	expiration: 14 days

@@ -1,0 +1,38 @@
+{block content}
+
+<h2>1) Install dependencies for this project</h2>
+<pre>
+$ composer install <small>(you already did this)</small>
+</pre>
+
+<h2>2) Install database schema</h2>
+<p>
+	<small>
+		First please create empty database and set DB credentials in the file <code>config/config.local.neon</code>.
+		Then run those commands:
+	</small>
+</p>
+<pre>
+$ bin/console <small>(Must be executable: chmod +x bin/console)</small>
+$ bin/console orm:info <small>(Found 3 mapped entities)</small>
+$ bin/console orm:validate-schema <small>(<span style="color:green">Mapping OK</span>, <span style="color:red">Database FAIL</span>)</small>
+$ bin/console orm:schema-tool:create
+$ bin/console orm:validate-schema <small>(<span style="color:green">Mapping OK</span>, <span style="color:green">Database OK</span>)</small>
+$ bin/console app:create:user &lt;userName&gt; &lt;plainPass&gt;
+</pre>
+<p>
+	After those steps you should see this message:<br>
+	<em><span style="color:green">New user has been successfully created.</span></em><br>
+	Now you can use this project and log in with created user&hellip;
+</p>
+
+<h2>Wanna run tests?</h2>
+<pre>$ vendor/bin/run-tests tests/ -C</pre>
+<small>For more details look into <code>.travis.yml</code> file. There is also PHP lint and Code Sniffer.</small>
+
+<p>Links:</p>
+<ol>
+	<li><a href="https://github.com/Kdyby/Doctrine/blob/master/docs/en/index.md" target="_blank">Doctrine integration into Nette</a></li>
+	<li><a href="http://ocramius.github.io/doctrine-best-practices/#/" target="_blank">Doctrine best practices</a></li>
+	<li><a href="https://github.com/ramsey/uuid" target="_blank">Library for UUID handling</a></li>
+</ol>

@@ -1,0 +1,5 @@
+services:
+	- class: App\Users\Commands\CreateUser
+	  tags:
+	  	- Kdyby\Console\DI\ConsoleExtension::TAG_COMMAND
+	- App\Users\UserManager

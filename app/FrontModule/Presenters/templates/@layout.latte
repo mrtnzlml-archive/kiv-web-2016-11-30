@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+
+	<link rel="stylesheet" href="{$basePath}/assets/front.css">
+</head>
+
+<body>
+	<div id="content">
+		<h1>Well done!</h1>
+		<div class="nav">
+			{foreach [
+				'Homepage:default' => 'Homepage',
+				'Single:about' => 'About',
+				'Single:login' => 'Login',
+				'Contact:' => 'Contact',
+			] as $destination => $title}
+				<a n:href="$destination" n:class="$presenter->isLinkCurrent($destination) ? current">{$title}</a>
+				{sep}|{/sep}
+			{/foreach}
+		</div>
+
+		<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+		{include content}
+
+		<hr class="fancy">
+		<p><strong>Hey!</strong> Don't forget to share your experience on Twitter. I'll be very happy.</p>
+		<a href="https://twitter.com/intent/tweet?button_hashtag=nettefw"
+		   class="twitter-hashtag-button"
+		   data-size="large"
+		   data-text="Now I understand what is #PHP really about. Thanks @mrtnzlml!"
+		   data-related="mrtnzlml"
+		   data-show-count="false">Tweet #nettefw</a>
+		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>
+
+	{block scripts}
+		<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+	{/block}
+</body>
+</html>
